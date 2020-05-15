@@ -1,4 +1,4 @@
-package com.haerul.popularnews;
+package com.evgeniiverh.popularnews;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
