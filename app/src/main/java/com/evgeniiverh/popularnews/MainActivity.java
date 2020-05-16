@@ -33,6 +33,7 @@ import com.evgeniiverh.popularnews.api.ApiInterface;
 import com.evgeniiverh.popularnews.models.Article;
 import com.evgeniiverh.popularnews.models.News;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,6 +80,10 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
+
+
+
+// TODO: Add adView to your view hierarchy.
 
     }
 
