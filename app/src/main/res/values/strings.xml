@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Popular News</string>
+    <string name="menu_setting">Settings</string>
+    <string name="menu_seach">Search</string>
+    <string name="error404">404 not found</string>
+    <string name="error500">500 server broken</string>
+    <string name="errorError">unknown error</string>
+    <string name="ErrorTitle">No Result</string>
+    <string name="errorMessage">Please Try Again!\n</string>
+    <string name="erro_ithernrt_tittle">Oops..</string>
+    <string name="error_internet_message">Network failure, Please Try Again\n</string>
+    <string name="menu_search_title">Search Latest News...</string>
+    <string name="menu_seaech_message">Type more than two letters!</string>
+    <string name="menu_share_title">Share from the News App</string>
+    <string name="menu_share_title_internet">Share with :</string>
+    <string name="mune_share_error">Hmm.. Sorry, \nCannot be share</string>
+    <string name="top_headlines"></string>
+    <string name="open_with_browser">Open with browser</string>
 </resources>

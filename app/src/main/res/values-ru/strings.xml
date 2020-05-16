@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Popular News</string>
+    <string name="menu_setting">Настройки</string>
+    <string name="menu_seach">Поиск</string>
+    <string name="error404">404 не найдено</string>
+    <string name="error500">500 сервер не отвечает</string>
+    <string name="errorError">неизвестная ошибка</string>
+    <string name="ErrorTitle">Нет результата</string>
+    <string name="errorMessage">Пожалуйста, Попробуйте Еще Раз\n</string>
+    <string name="erro_ithernrt_tittle">Уупс...</string>
+    <string name="error_internet_message">Ошибка сети, Пожалуйста, Попробуйте Еще Раз\n</string>
+    <string name="menu_search_title">Поиск...</string>
+    <string name="menu_seaech_message">Введите более двух букв!</string>
+    <string name="menu_share_title">Поделиться из Приложения</string>
+    <string name="menu_share_title_internet">Поделиться с:</string>
+    <string name="mune_share_error">" Хм .. Извините, \nНельзя поделится"</string>
+    <string name="top_headlines"></string>
+    <string name="open_with_browser">Открыть в браузере</string>
+</resources>

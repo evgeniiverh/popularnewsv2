@@ -7,16 +7,16 @@
     <item
         android:id="@+id/action_search"
         android:orderInCategory="100"
-        android:title="Search"
+        android:title="@string/menu_seach"
         android:icon="@drawable/ic_search"
-        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
         app:showAsAction="collapseActionView|always"
         android:theme="@android:style/Theme.Holo.Light.DarkActionBar"/>
 
-    <item
+    <!--<item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title="Settings"
-        app:showAsAction="never"/>
+        android:title="@string/menu_setting"
+        app:showAsAction="never"/> -->
 
 </menu>

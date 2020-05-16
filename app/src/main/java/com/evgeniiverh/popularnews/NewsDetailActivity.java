@@ -2,11 +2,9 @@ package com.evgeniiverh.popularnews;
 
 import android.content.Intent;
 import android.net.Uri;
-import android.support.design.widget.AppBarLayout;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -18,9 +16,14 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
+import com.google.android.material.appbar.AppBarLayout;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 public class NewsDetailActivity extends AppCompatActivity implements AppBarLayout.OnOffsetChangedListener{
 
@@ -160,12 +163,12 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
                 Intent i = new Intent(Intent.ACTION_SEND);
                 i.setType("text/plan");
                 i.putExtra(Intent.EXTRA_SUBJECT, mSource);
-                String body = mTitle + "\n" + mUrl + "\n" + "Share from the News App" + "\n";
+                String body = mTitle + "\n" + mUrl + "\n" + getString(R.string.menu_share_title) + "\n";
                 i.putExtra(Intent.EXTRA_TEXT, body);
-                startActivity(Intent.createChooser(i, "Share with :"));
+                startActivity(Intent.createChooser(i, getString(R.string.menu_share_title_internet)));
 
             }catch (Exception e){
-                Toast.makeText(this, "Hmm.. Sorry, \nCannot be share", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.mune_share_error, Toast.LENGTH_SHORT).show();
             }
         }
 

@@ -4,25 +4,29 @@ import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
-import android.support.v4.app.ActivityOptionsCompat;
-import android.support.v4.util.Pair;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.support.v7.widget.SearchView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.util.Pair;
+import androidx.core.view.MenuItemCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
 
 import com.evgeniiverh.popularnews.api.ApiClient;
 import com.evgeniiverh.popularnews.api.ApiInterface;
@@ -59,6 +63,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
         swipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
+
 
         topHeadline = findViewById(R.id.topheadelines);
         recyclerView = findViewById(R.id.recyclerView);
@@ -111,7 +116,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
                     initListener();
 
-                    topHeadline.setVisibility(View.VISIBLE);
+                   topHeadline.setVisibility(View.VISIBLE);
                     swipeRefreshLayout.setRefreshing(false);
 
 
@@ -123,20 +128,20 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
                     String errorCode;
                     switch (response.code()) {
                         case 404:
-                            errorCode = "404 not found";
+                            errorCode = getString(R.string.error404);
                             break;
                         case 500:
-                            errorCode = "500 server broken";
+                            errorCode = getString(R.string.error500);
                             break;
                         default:
-                            errorCode = "unknown error";
+                            errorCode = getString(R.string.errorError);
                             break;
                     }
 
                     showErrorMessage(
                             R.drawable.no_result,
-                            "No Result",
-                            "Please Try Again!\n"+
+                            getString(R.string.ErrorTitle),
+                            getString(R.string.errorMessage)+
                             errorCode);
 
                 }
@@ -148,8 +153,8 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
                 swipeRefreshLayout.setRefreshing(false);
                 showErrorMessage(
                         R.drawable.oops,
-                        "Oops..",
-                        "Network failure, Please Try Again\n"+
+                        getString(R.string.erro_ithernrt_tittle),
+                        getString(R.string.error_internet_message)+
                                 t.toString());
             }
         });
@@ -199,11 +204,11 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
         SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
-        final SearchView searchView = (SearchView) menu.findItem(R.id.action_search).getActionView();
+        final SearchView searchView = (SearchView) MenuItemCompat.getActionView(menu.findItem(R.id.action_search));
         MenuItem searchMenuItem = menu.findItem(R.id.action_search);
 
         searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
-        searchView.setQueryHint("Search Latest News...");
+        searchView.setQueryHint(getString(R.string.menu_search_title));
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -211,7 +216,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
                     onLoadingSwipeRefresh(query);
                 }
                 else {
-                    Toast.makeText(MainActivity.this, "Type more than two letters!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, R.string.menu_seaech_message, Toast.LENGTH_SHORT).show();
                 }
                 return false;
             }
