@@ -32,6 +32,9 @@ import com.evgeniiverh.popularnews.api.ApiClient;
 import com.evgeniiverh.popularnews.api.ApiInterface;
 import com.evgeniiverh.popularnews.models.Article;
 import com.evgeniiverh.popularnews.models.News;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
 
 
 import java.util.ArrayList;
@@ -55,11 +58,18 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     private ImageView errorImage;
     private TextView errorTitle, errorMessage;
     private Button btnRetry;
+    private AdView madView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        madView =findViewById(R.id.banner_ad);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        madView.loadAd(adRequest);
+
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
         swipeRefreshLayout.setOnRefreshListener(this);
@@ -80,6 +90,11 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         errorTitle = findViewById(R.id.errorTitle);
         errorMessage = findViewById(R.id.errorMessage);
         btnRetry = findViewById(R.id.btnRetry);
+
+
+
+
+
 
 
 

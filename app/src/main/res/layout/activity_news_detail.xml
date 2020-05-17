@@ -236,4 +236,14 @@
             android:layout_height="wrap_content" />
     </FrameLayout>
 
+    <com.google.android.gms.ads.AdView
+        xmlns:ads='http://schemas.android.com/apk/res-auto'
+        android:id="@+id/banner_ad"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="bottom|center_horizontal"
+        ads:adSize="BANNER"
+        ads:adUnitId="@string/banner_id">
+    </com.google.android.gms.ads.AdView>
+
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

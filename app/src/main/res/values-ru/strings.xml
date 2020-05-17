@@ -17,4 +17,7 @@
     <string name="mune_share_error">" Хм .. Извините, \nНельзя поделится"</string>
     <string name="top_headlines"></string>
     <string name="open_with_browser">Открыть в браузере</string>
+
+    <string name="app_id">ca-app-pub-3940256099942544~3347511713</string>
+    <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
 </resources>
