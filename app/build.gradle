@@ -7,6 +7,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 29
         versionCode 1
+        multiDexEnabled true
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -44,4 +45,12 @@ dependencies {
 
 //Times Formater
     implementation 'org.ocpsoft.prettytime:prettytime:4.0.1.Final'
+    implementation 'com.google.android.gms:play-services-location:17.0.0'
+
+
+    // AppMetrica SDK.
+
+    implementation 'com.android.support:multidex:1.0.3'
+    implementation ('com.yandex.android:mobmetricalib:3.13.1')
+    implementation 'com.android.installreferrer:installreferrer:1.1.2'
 }

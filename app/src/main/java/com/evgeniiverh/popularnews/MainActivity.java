@@ -35,6 +35,9 @@ import com.evgeniiverh.popularnews.models.News;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.yandex.metrica.YandexMetrica;
+import com.yandex.metrica.YandexMetricaConfig;
+
 
 
 import java.util.ArrayList;
@@ -69,6 +72,12 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         madView =findViewById(R.id.banner_ad);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);
+
+        YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder("9c7b5ab2-ef34-421e-afda-5684907e6a00").build();
+        // Initializing the AppMetrica SDK.
+        YandexMetrica.activate(getApplicationContext(), config);
+        // Automatic tracking of user activity.
+        YandexMetrica.enableActivityAutoTracking(getApplication());
 
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
