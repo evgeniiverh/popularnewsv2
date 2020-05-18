@@ -24,6 +24,7 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
 import com.google.android.material.appbar.AppBarLayout;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
@@ -39,6 +40,7 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
     private Toolbar toolbar;
     private String mUrl, mImg, mTitle, mDate, mSource, mAuthor;
     private AdView madView;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,9 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         madView =findViewById(R.id.banner_ad);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -120,7 +125,11 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
     @Override
     public void onBackPressed() {
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
         super.onBackPressed();
+
+
+
         supportFinishAfterTransition();
     }
 
