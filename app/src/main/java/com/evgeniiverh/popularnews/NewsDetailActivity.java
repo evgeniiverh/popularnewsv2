@@ -5,6 +5,7 @@ import android.net.Uri;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -55,6 +56,7 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         mInterstitialAd = new InterstitialAd(this);
         mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
 
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -125,7 +127,13 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
     @Override
     public void onBackPressed() {
-        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
+
         super.onBackPressed();
 
 
@@ -135,6 +143,11 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
 
     @Override
     public boolean onSupportNavigateUp() {
+        if (mInterstitialAd.isLoaded()) {
+            mInterstitialAd.show();
+        } else {
+            Log.d("TAG", "The interstitial wasn't loaded yet.");
+        }
         onBackPressed();
         return true;
     }
