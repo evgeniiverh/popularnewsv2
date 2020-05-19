@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Popular News</string>
-    <string name="menu_setting">Настройки</string>
+    <string name="menu_setting">О приложении</string>
     <string name="menu_seach">Поиск</string>
     <string name="error404">404 не найдено</string>
     <string name="error500">500 сервер не отвечает</string>
