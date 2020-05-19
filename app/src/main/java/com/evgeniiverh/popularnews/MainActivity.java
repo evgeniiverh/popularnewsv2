@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this,getString(R.string.admobId));
         madView =findViewById(R.id.banner_ad);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);

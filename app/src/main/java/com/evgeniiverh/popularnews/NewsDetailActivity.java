@@ -48,13 +48,13 @@ public class NewsDetailActivity extends AppCompatActivity implements AppBarLayou
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_detail);
 
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this,getString(R.string.admobId));
         madView =findViewById(R.id.banner_ad);
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);
 
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(getString(R.string.adMobFullSkrinID));
 
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
 
