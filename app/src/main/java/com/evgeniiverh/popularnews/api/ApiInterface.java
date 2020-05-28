@@ -26,4 +26,13 @@ public interface ApiInterface {
 
     );
 
+    @GET("top-headlines")
+    Call<News> getNewsCat(
+
+            @Query("country") String country ,
+            @Query("category") String category,
+            @Query("apiKey") String apiKey
+
+    );
+
 }

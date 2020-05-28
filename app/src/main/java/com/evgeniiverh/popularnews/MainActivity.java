@@ -126,7 +126,8 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         if (keyword.length() > 0 ){
             call = apiInterface.getNewsSearch(keyword, language, "publishedAt", API_KEY);
         } else {
-            call = apiInterface.getNews(country, API_KEY);
+            //call = apiInterface.getNews(country, API_KEY);
+            call = apiInterface.getNewsCat(country,"sports", API_KEY);
         }
 
         call.enqueue(new Callback<News>() {
