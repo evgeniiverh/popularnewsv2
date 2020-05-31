@@ -16,12 +16,14 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -51,7 +53,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends ParentNavigationActivity implements  SwipeRefreshLayout.OnRefreshListener{
+public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayout.OnRefreshListener, NavigationView.OnNavigationItemSelectedListener{
 
     public static final String API_KEY = "8fc98e5bcade4034bc0a169a3f0174e0";
     private RecyclerView recyclerView;
@@ -67,11 +69,13 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
     private Button btnRetry;
     private AdView madView;
     private Toolbar toolbar;
+    private String CATEGORY = "";
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mDrawerToggle;
     private CharSequence mDrawerTitle;
     private CharSequence mTitle;
+    private Button ok;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,28 +87,16 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
-        mTitle = mDrawerTitle = getTitle();
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
-                toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
 
-            /** Этот код вызывается, когда боковое меню переходит в полностью закрытое состояние. */
-            public void onDrawerClosed(View view) {
-                super.onDrawerClosed(view);
-              //  getActionBar().setTitle(mTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.bringToFront();
+        navigationView.setNavigationItemSelectedListener(this);
 
-            /** Этот код вызывается, когда боковое меню полностью открывается. */
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-               // getActionBar().setTitle(mDrawerTitle);
-                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
-            }
-        };
-
-        // Set the drawer toggle as the DrawerListener
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
 
 
 
@@ -132,7 +124,7 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setNestedScrollingEnabled(false);
 
-        onLoadingSwipeRefresh("");
+        onLoadingSwipeRefresh("","");
 
         errorLayout = findViewById(R.id.errorLayout);
         errorImage = findViewById(R.id.errorImage);
@@ -151,14 +143,10 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
 
     }
 
-    @Override
-    protected void onPostCreate(Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        // Sync the toggle state after onRestoreInstanceState has occurred.
-        mDrawerToggle.syncState();
-    }
 
-    public void LoadJson(final String keyword){
+
+
+    public void LoadJson(final String keyword, final  String categ){
 
         errorLayout.setVisibility(View.GONE);
         swipeRefreshLayout.setRefreshing(true);
@@ -172,9 +160,11 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
 
         if (keyword.length() > 0 ){
             call = apiInterface.getNewsSearch(keyword, language, "publishedAt", API_KEY);
-        } else {
-            //call = apiInterface.getNews(country, API_KEY);
-            call = apiInterface.getNewsCat(country,"sports", API_KEY);
+        } else if(categ.length()>0){
+            call = apiInterface.getNewsCat(country,categ, API_KEY);
+        }
+        else{
+            call = apiInterface.getNews(country, API_KEY);
         }
 
         call.enqueue(new Callback<News>() {
@@ -290,7 +280,7 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
             @Override
             public boolean onQueryTextSubmit(String query) {
                 if (query.length() > 2){
-                    onLoadingSwipeRefresh(query);
+                    onLoadingSwipeRefresh(query,"");
                 }
                 else {
                     Toast.makeText(MainActivity.this, R.string.menu_seaech_message, Toast.LENGTH_SHORT).show();
@@ -311,16 +301,16 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
 
     @Override
     public void onRefresh() {
-        LoadJson("");
+        LoadJson("",CATEGORY);
     }
 
-    private void onLoadingSwipeRefresh(final String keyword){
+    public void onLoadingSwipeRefresh(final String keyword,final String categ){
 
         swipeRefreshLayout.post(
                 new Runnable() {
                     @Override
                     public void run() {
-                        LoadJson(keyword);
+                        LoadJson(keyword,categ);
                     }
                 }
         );
@@ -340,11 +330,43 @@ public class MainActivity extends ParentNavigationActivity implements  SwipeRefr
         btnRetry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onLoadingSwipeRefresh("");
+                onLoadingSwipeRefresh("","");
             }
         });
 
     }
 
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        // Handle navigation view item clicks here.
+        int id = item.getItemId();
+
+
+         if (id == R.id.nav_gallery) {
+             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+             LoadJson("","sports");
+             CATEGORY = "sports";
+
+
+        } else if (id == R.id.nav_slideshow) {
+             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+             LoadJson("","entertainment");
+             CATEGORY = "entertainment";
+
+        } else if (id == R.id.nav_manage) {
+             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_share) {
+             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+
+        } else if (id == R.id.nav_send) {
+             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+
+        }
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

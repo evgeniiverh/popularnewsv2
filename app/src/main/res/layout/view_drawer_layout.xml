@@ -10,10 +10,19 @@
         android:textAllCaps="false"
         android:id="@+id/ok"
         android:text="Next"
+        android:clickable="true"
         android:textStyle="bold"
         android:textSize="25sp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:textColor="@color/colorTextTitle" />
+        android:textColor="@color/colorTextTitle"
+        android:focusable="true" />
+    <Button
+        android:id="@+id/ok2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Азазаз"
+        android:clickable="true"
+        android:focusable="true" />
 
 </RelativeLayout>
