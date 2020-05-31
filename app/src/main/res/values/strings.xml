@@ -16,6 +16,8 @@
     <string name="mune_share_error">Hmm.. Sorry, \nCannot be share</string>
     <string name="top_headlines"></string>
     <string name="open_with_browser">Open with browser</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="admobId">ca-app-pub-4432004591406050~1463987969</string>
 

@@ -16,12 +16,15 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityOptionsCompat;
 import androidx.core.util.Pair;
 import androidx.core.view.MenuItemCompat;
 import androidx.core.view.ViewCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -35,6 +38,7 @@ import com.evgeniiverh.popularnews.models.News;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.material.navigation.NavigationView;
 import com.yandex.metrica.YandexMetrica;
 import com.yandex.metrica.YandexMetricaConfig;
 
@@ -47,7 +51,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayout.OnRefreshListener{
+public class MainActivity extends ParentNavigationActivity implements  SwipeRefreshLayout.OnRefreshListener{
 
     public static final String API_KEY = "8fc98e5bcade4034bc0a169a3f0174e0";
     private RecyclerView recyclerView;
@@ -62,11 +66,47 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     private TextView errorTitle, errorMessage;
     private Button btnRetry;
     private AdView madView;
+    private Toolbar toolbar;
+
+    private DrawerLayout mDrawerLayout;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+        mTitle = mDrawerTitle = getTitle();
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
+                toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
+
+            /** Этот код вызывается, когда боковое меню переходит в полностью закрытое состояние. */
+            public void onDrawerClosed(View view) {
+                super.onDrawerClosed(view);
+              //  getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            /** Этот код вызывается, когда боковое меню полностью открывается. */
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+               // getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+
+        // Set the drawer toggle as the DrawerListener
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+
+
 
         MobileAds.initialize(this,getString(R.string.admobId));
         madView =findViewById(R.id.banner_ad);
@@ -109,6 +149,13 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
 // TODO: Add adView to your view hierarchy.
 
+    }
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
     }
 
     public void LoadJson(final String keyword){

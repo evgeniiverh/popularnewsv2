@@ -18,6 +18,9 @@
     <string name="top_headlines"></string>
     <string name="open_with_browser">Открыть в браузере</string>
 
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
     <string name="admobId">ca-app-pub-4432004591406050~1463987969</string>
 
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
