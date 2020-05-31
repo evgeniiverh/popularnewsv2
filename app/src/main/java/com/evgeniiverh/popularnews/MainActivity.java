@@ -1,8 +1,10 @@
 package com.evgeniiverh.popularnews;
 
 import android.app.SearchManager;
+import android.content.ClipData;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -17,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
@@ -96,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.bringToFront();
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
 
 
 
@@ -125,6 +129,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         recyclerView.setNestedScrollingEnabled(false);
 
         onLoadingSwipeRefresh("","");
+
 
         errorLayout = findViewById(R.id.errorLayout);
         errorImage = findViewById(R.id.errorImage);
@@ -337,33 +342,44 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
     }
 
 
+
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
+        if (id == R.id.glavNews) {
 
-         if (id == R.id.nav_gallery) {
-             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+             LoadJson("","general");
+             CATEGORY = "general";
+
+        } else if (id == R.id.biznesNews) {
+
+             LoadJson("","business");
+             CATEGORY = "business";
+
+
+        } else if (id == R.id.naukNews) {
+             LoadJson("","science");
+             CATEGORY = "science";
+
+        } else if (id == R.id.sportNews) {
              LoadJson("","sports");
              CATEGORY = "sports";
 
+        }else if (id == R.id.headNews) {
+             LoadJson("","health");
+             CATEGORY = "health";
 
-        } else if (id == R.id.nav_slideshow) {
-             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
+         }else if (id == R.id.techNews) {
+             LoadJson("","technology");
+             CATEGORY = "technology";
+
+         }else if (id == R.id.razvkNews) {
              LoadJson("","entertainment");
              CATEGORY = "entertainment";
 
-        } else if (id == R.id.nav_manage) {
-             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_share) {
-             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
-
-        } else if (id == R.id.nav_send) {
-             Toast.makeText(getApplicationContext(), "Вы выбрали камеру", Toast.LENGTH_SHORT).show();
-
-        }
+         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

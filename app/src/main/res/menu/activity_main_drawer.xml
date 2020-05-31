@@ -2,36 +2,36 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/nav_camera"
-            android:checkable="true"
-            android:icon="@drawable/ic_share"
-            android:title="Import" />
-        <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_share"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_share"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_share"
-            android:title="Tools" />
-    </group>
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_share"
-                android:title="Send" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/glavNews"
+            android:icon="@drawable/ic_share"
+            android:title="Главное" />
+        <item
+            android:id="@+id/biznesNews"
+            android:icon="@drawable/ic_share"
+            android:title="Бизнес" />
+        <item
+            android:id="@+id/naukNews"
+            android:icon="@drawable/ic_share"
+            android:title="Наука" />
+        <item
+            android:id="@+id/sportNews"
+            android:icon="@drawable/ic_share"
+            android:title="Спорт" />
+        <item
+            android:id="@+id/headNews"
+            android:icon="@drawable/ic_share"
+            android:title="Здоровье" />
+        <item
+            android:id="@+id/techNews"
+            android:icon="@drawable/ic_share"
+            android:title="Технологии" />
+        <item
+            android:id="@+id/razvkNews"
+            android:icon="@drawable/ic_share"
+            android:title="Развлечения" />
+
+    </group>
 
 </menu>
