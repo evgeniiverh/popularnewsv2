@@ -130,7 +130,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
 
         onLoadingSwipeRefresh("","");
         toolbar.setTitleTextColor(getResources().getColor(R.color.colorBackground));
-        toolbar.setTitle(getString(R.string.menu_glav));
+        toolbar.setTitle(R.string.menu_glav);
 
 
 
