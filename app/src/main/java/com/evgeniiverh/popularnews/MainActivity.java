@@ -109,11 +109,11 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         AdRequest adRequest = new AdRequest.Builder().build();
         madView.loadAd(adRequest);
 
-        //YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder("9c7b5ab2-ef34-421e-afda-5684907e6a00").build();
+        YandexMetricaConfig config = YandexMetricaConfig.newConfigBuilder("9c7b5ab2-ef34-421e-afda-5684907e6a00").build();
         // Initializing the AppMetrica SDK.
-       // YandexMetrica.activate(getApplicationContext(), config);
+        YandexMetrica.activate(getApplicationContext(), config);
         // Automatic tracking of user activity.
-       // YandexMetrica.enableActivityAutoTracking(getApplication());
+        YandexMetrica.enableActivityAutoTracking(getApplication());
 
 
         swipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
