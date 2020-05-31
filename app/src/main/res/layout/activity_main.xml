@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
+    android:background="@color/colorBackground" >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
     android:background="@color/colorBackground"
     android:orientation="vertical">
     <androidx.appcompat.widget.Toolbar
@@ -24,10 +29,10 @@
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/nav_view"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main"
+        android:background="#FFFFFF"
         app:menu="@menu/activity_main_drawer" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -52,12 +57,12 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textStyle="bold"
-                    android:text="gfhgfhdsds"
                     android:fontFamily="sans-serif-light"
-                    android:textSize="17sp"
+                    android:textSize="1sp"
                     android:layout_marginLeft="16dp"
                     android:layout_marginRight="16dp"
-                    android:layout_marginTop="10dp"
+                    android:layout_marginTop="0dp"
+                    android:visibility="invisible"
                    />
 
                 <androidx.recyclerview.widget.RecyclerView
@@ -67,9 +72,14 @@
                     android:layout_height="wrap_content">
               </androidx.recyclerview.widget.RecyclerView>
 
+
             </LinearLayout>
 
+
         </androidx.core.widget.NestedScrollView>
+
+
+
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
@@ -78,8 +88,7 @@
 
 </androidx.drawerlayout.widget.DrawerLayout>
 
-
-
+</LinearLayout>
     <com.google.android.gms.ads.AdView
         xmlns:ads='http://schemas.android.com/apk/res-auto'
         android:id="@+id/banner_ad"
@@ -89,5 +98,4 @@
         ads:adSize="BANNER"
         ads:adUnitId="@string/banner_id">
     </com.google.android.gms.ads.AdView>
-
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

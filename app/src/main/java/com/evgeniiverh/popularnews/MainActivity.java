@@ -129,6 +129,9 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         recyclerView.setNestedScrollingEnabled(false);
 
         onLoadingSwipeRefresh("","");
+        toolbar.setTitleTextColor(getResources().getColor(R.color.colorBackground));
+        toolbar.setTitle(getString(R.string.menu_glav));
+
 
 
         errorLayout = findViewById(R.id.errorLayout);
@@ -349,35 +352,40 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         int id = item.getItemId();
 
         if (id == R.id.glavNews) {
-
              LoadJson("","general");
              CATEGORY = "general";
+             toolbar.setTitle(R.string.menu_glav);
 
         } else if (id == R.id.biznesNews) {
 
              LoadJson("","business");
              CATEGORY = "business";
-
+            toolbar.setTitle(R.string.menu_biznes);
 
         } else if (id == R.id.naukNews) {
              LoadJson("","science");
              CATEGORY = "science";
+            toolbar.setTitle(R.string.menu_biznes);
 
         } else if (id == R.id.sportNews) {
              LoadJson("","sports");
              CATEGORY = "sports";
+            toolbar.setTitle(R.string.menu_sport);
 
         }else if (id == R.id.headNews) {
              LoadJson("","health");
              CATEGORY = "health";
+            toolbar.setTitle(R.string.menu_zdorovie);
 
          }else if (id == R.id.techNews) {
              LoadJson("","technology");
              CATEGORY = "technology";
+            toolbar.setTitle(R.string.menu_technolo);
 
          }else if (id == R.id.razvkNews) {
              LoadJson("","entertainment");
              CATEGORY = "entertainment";
+            toolbar.setTitle(R.string.menu_razvle);
 
          }
 

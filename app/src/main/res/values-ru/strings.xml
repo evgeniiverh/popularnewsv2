@@ -11,11 +11,17 @@
     <string name="erro_ithernrt_tittle">Уупс...</string>
     <string name="error_internet_message">Ошибка сети, Пожалуйста, Попробуйте Еще Раз\n</string>
     <string name="menu_search_title">Поиск...</string>
+    <string name="menu_glav">Главное</string>
+    <string name="menu_biznes">Бизнес</string>
+    <string name="menu_nauka">Наука</string>
+    <string name="menu_sport">Спорт</string>
+    <string name="menu_zdorovie">Здоровье</string>
+    <string name="menu_technolo">Технологии</string>
+    <string name="menu_razvle">Развлечения</string>
     <string name="menu_seaech_message">Введите более двух букв!</string>
     <string name="menu_share_title">Поделиться из Приложения</string>
     <string name="menu_share_title_internet">Поделиться с:</string>
     <string name="mune_share_error">" Хм .. Извините, \nНельзя поделится"</string>
-    <string name="top_headlines"></string>
     <string name="open_with_browser">Открыть в браузере</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -25,4 +31,5 @@
 
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="adMobFullSkrinID">ca-app-pub-3940256099942544/1033173712</string>
+
 </resources>

@@ -14,13 +14,23 @@
     <string name="menu_share_title">Share from the News App</string>
     <string name="menu_share_title_internet">Share with :</string>
     <string name="mune_share_error">Hmm.. Sorry, \nCannot be share</string>
-    <string name="top_headlines"></string>
     <string name="open_with_browser">Open with browser</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="menu_glav">Top news</string>
+    <string name="menu_biznes">Business</string>
+    <string name="menu_nauka">Science</string>
+    <string name="menu_sport">Sport</string>
+    <string name="menu_zdorovie">Health</string>
+    <string name="menu_technolo">Technologies</string>
+    <string name="menu_razvle">Entertainment</string>
+
+
 
     <string name="admobId">ca-app-pub-4432004591406050~1463987969</string>
 
     <string name="banner_id">ca-app-pub-3940256099942544/6300978111</string>
     <string name="adMobFullSkrinID">ca-app-pub-3940256099942544/1033173712</string>
+
+
 </resources>

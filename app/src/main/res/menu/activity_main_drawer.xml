@@ -5,32 +5,32 @@
 
         <item
             android:id="@+id/glavNews"
-            android:icon="@drawable/ic_share"
-            android:title="Главное" />
+            android:icon="@drawable/ic_glav"
+            android:title="@string/menu_glav" />
         <item
             android:id="@+id/biznesNews"
-            android:icon="@drawable/ic_share"
-            android:title="Бизнес" />
+            android:icon="@drawable/ic_biznes"
+            android:title="@string/menu_biznes" />
         <item
             android:id="@+id/naukNews"
-            android:icon="@drawable/ic_share"
-            android:title="Наука" />
+            android:icon="@drawable/ic_nauka"
+            android:title="@string/menu_nauka" />
         <item
             android:id="@+id/sportNews"
-            android:icon="@drawable/ic_share"
-            android:title="Спорт" />
+            android:icon="@drawable/ic_sport"
+            android:title="@string/menu_sport" />
         <item
             android:id="@+id/headNews"
-            android:icon="@drawable/ic_share"
-            android:title="Здоровье" />
+            android:icon="@drawable/ic_zdorovie"
+            android:title="@string/menu_zdorovie" />
         <item
             android:id="@+id/techNews"
-            android:icon="@drawable/ic_share"
-            android:title="Технологии" />
+            android:icon="@drawable/ic_tech"
+            android:title="@string/menu_technolo" />
         <item
             android:id="@+id/razvkNews"
-            android:icon="@drawable/ic_share"
-            android:title="Развлечения" />
+            android:icon="@drawable/ic_razv"
+            android:title="@string/menu_razvle" />
 
     </group>
 
