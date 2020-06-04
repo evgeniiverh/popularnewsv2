@@ -365,7 +365,7 @@ public class MainActivity extends AppCompatActivity implements  SwipeRefreshLayo
         } else if (id == R.id.naukNews) {
              LoadJson("","science");
              CATEGORY = "science";
-            toolbar.setTitle(R.string.menu_biznes);
+            toolbar.setTitle(R.string.menu_nauka);
 
         } else if (id == R.id.sportNews) {
              LoadJson("","sports");
