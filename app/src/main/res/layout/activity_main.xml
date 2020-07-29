@@ -6,89 +6,88 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity"
     android:background="@color/colorBackground" >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
 
-    android:background="@color/colorBackground"
-    android:orientation="vertical">
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?attr/colorPrimary"
-        android:minHeight="?attr/actionBarSize"/>
-
-
-<androidx.drawerlayout.widget.DrawerLayout
-    android:id="@+id/drawer_layout"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-
-
-    <com.google.android.material.navigation.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        android:background="#FFFFFF"
-        app:menu="@menu/activity_main_drawer" />
-
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipe_refresh_layout"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground">
+        android:layout_marginBottom="50dp"
 
-        <androidx.core.widget.NestedScrollView
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:background="?attr/colorPrimary"
+            android:minHeight="?attr/actionBarSize" />
 
-            <LinearLayout
-                android:orientation="vertical"
+
+        <androidx.drawerlayout.widget.DrawerLayout
+            android:id="@+id/drawer_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <com.google.android.material.navigation.NavigationView
+                android:id="@+id/nav_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="#FFFFFF"
+                android:fitsSystemWindows="true"
+                app:menu="@menu/activity_main_drawer" />
+
+            <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:background="@color/colorBackground">
 
-
-                <TextView
-                    android:id="@+id/topheadelines"
-                    android:textColor="@color/colorTextTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:textStyle="bold"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="1sp"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginRight="16dp"
-                    android:layout_marginTop="0dp"
-                    android:visibility="invisible"
-                   />
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerView"
-                    android:scrollbars="vertical"
+                <androidx.core.widget.NestedScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
-              </androidx.recyclerview.widget.RecyclerView>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
 
-            </LinearLayout>
+                        <TextView
+                            android:id="@+id/topheadelines"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="16dp"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="16dp"
+                            android:fontFamily="sans-serif-light"
+                            android:textColor="@color/colorTextTitle"
+                            android:textSize="1sp"
+                            android:textStyle="bold"
+                            android:visibility="invisible" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerView"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
 
 
-        </androidx.core.widget.NestedScrollView>
+                    </LinearLayout>
 
 
+                </androidx.core.widget.NestedScrollView>
 
 
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
-    <include layout="@layout/error"/>
+            <include layout="@layout/error" />
 
-</androidx.drawerlayout.widget.DrawerLayout>
+        </androidx.drawerlayout.widget.DrawerLayout>
 
-</LinearLayout>
+    </LinearLayout>
     <com.google.android.gms.ads.AdView
         xmlns:ads='http://schemas.android.com/apk/res-auto'
         android:id="@+id/banner_ad"
